@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>选题助手 Agent</title>
+    <meta
+      name="description"
+      content="选题助手 Agent 公开展示页：展示功能、工作流、规范与能力边界，所有互动均为静态模拟。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <nav class="topbar" aria-label="页面导航">
+          <div class="brand-mark">选</div>
+          <div>
+            <p class="eyebrow">Agent Showcase</p>
+            <p class="brand-name">选题助手 Agent</p>
+          </div>
+          <div class="nav-note">公开展示版 · 不连接真实 API</div>
+        </nav>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="status-pill" id="statusText">待演示</div>
+            <h1>面向 AI 实战公众号的选题、资料搜集与初稿生成助手</h1>
+            <p class="lead">
+              输入一个宽泛主题，先拆解可写角度；等用户选定角度后，再围绕该角度整理公开资讯、素材库、文章大纲和可润色初稿。
+            </p>
+            <div class="hero-actions">
+              <a href="#demo" class="primary-link">体验模拟流程</a>
+              <a href="#boundaries" class="secondary-link">查看能力边界</a>
+            </div>
+          </div>
+
+          <div class="agent-console" id="demo">
+            <div class="console-head">
+              <span>模拟工作台</span>
+              <span>静态演示</span>
+            </div>
+            <label class="input-label" for="topic">宽泛主题</label>
+            <textarea id="topic" aria-label="模拟主题输入">我想写一篇关于 AI 自动化工作流的公众号文章，重点关注普通人怎么上手，以及实际搭建时容易踩哪些坑。</textarea>
+            <button class="run-button" id="runButton" type="button">模拟运行</button>
+            <div class="progress-list" id="progressList" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section angles-section">
+        <div class="section-kicker">Angle Split</div>
+        <h2>它先给出可判断、可选择的选题角度</h2>
+        <p class="section-intro">
+          真正的选题不是把大词拆小，而是判断读者关心什么、哪里有问题密度、哪个角度能独立写成一篇文章。
+        </p>
+        <div class="angle-grid" id="angleGrid"></div>
+      </section>
+
+      <section class="section flow-section">
+        <div class="section-kicker">Workflow</div>
+        <h2>从宽泛主题到飞书文档的完整链路</h2>
+        <div class="flow" id="flowGrid"></div>
+      </section>
+
+      <section class="split-section">
+        <div class="panel">
+          <div class="section-kicker">Capabilities</div>
+          <h2>能力清单</h2>
+          <div class="tag-grid" id="capabilityGrid"></div>
+        </div>
+        <div class="panel" id="boundaries">
+          <div class="section-kicker">Boundaries</div>
+          <h2>规范与边界</h2>
+          <ul class="clean-list" id="guardrailList"></ul>
+        </div>
+      </section>
+
+      <section class="section document-preview">
+        <div class="preview-copy">
+          <div class="section-kicker">Output Preview</div>
+          <h2>最终交付像一份可继续润色的飞书文档</h2>
+          <p>
+            真实运行时，Agent 会把角度清单、选定角度、素材库、大纲、初稿和风险说明汇总到同一份飞书文档。展示页只呈现脱敏样例。
+          </p>
+        </div>
+        <article class="doc-card">
+          <div class="doc-toolbar">
+            <span>飞书文档样例</span>
+            <span>仅展示</span>
+          </div>
+          <h3 id="docTitle">AI Agent 真正落地前要先做哪些判断</h3>
+          <h4>素材库摘要</h4>
+          <ul>
+            <li>用户痛点：想做自动化，但不知道任务如何拆成可执行节点。</li>
+            <li>可写案例：从选题、资料搜集、写作到飞书文档交付的闭环。</li>
+            <li>风险提示：所有数据、案例和引用必须回到公开来源验证。</li>
+          </ul>
+          <h4>文章大纲</h4>
+          <ol>
+            <li>为什么宽泛主题不能直接开写</li>
+            <li>如何用评论区问题判断真实需求</li>
+            <li>把工作拆成 Agent 可执行的判断链</li>
+            <li>权限、资料来源和人工兜底怎么设计</li>
+          </ol>
+          <blockquote>
+            初稿片段：一个能用的内容 Agent，不是替你拍脑袋，而是把你的判断标准固定下来，让每一次选题都能被复盘。
+          </blockquote>
+        </article>
+      </section>
+
+      <section class="section safety-section">
+        <div class="section-kicker">Safe Demo</div>
+        <h2>公开展示，不暴露权限和数据</h2>
+        <div class="safety-grid" id="safetyGrid"></div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
