@@ -257,6 +257,97 @@ textarea:focus {
   color: white;
 }
 
+.demo-result {
+  margin-top: 18px;
+  border: 1px solid rgba(15, 143, 131, 0.24);
+  border-radius: 8px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.result-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+  padding: 13px 14px;
+  background: #f0f8f6;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.result-block {
+  display: none;
+  border-bottom: 1px solid var(--line);
+  padding: 16px;
+}
+
+.result-block:last-child {
+  border-bottom: 0;
+}
+
+.result-block.is-visible {
+  display: block;
+}
+
+.result-block h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.result-block p,
+.result-block li {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.result-block p {
+  margin: 0 0 8px;
+}
+
+.result-block ul,
+.result-block ol {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.run-log {
+  display: grid;
+  gap: 8px;
+  padding-left: 0 !important;
+  list-style: none;
+}
+
+.run-log li {
+  border-left: 3px solid var(--teal);
+  padding-left: 10px;
+}
+
+.mini-angle-list {
+  display: grid;
+  gap: 10px;
+}
+
+.mini-angle {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfdfc;
+}
+
+.mini-angle b {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--ink);
+}
+
+.mini-angle p {
+  margin: 0;
+  font-size: 14px;
+}
+
 .section,
 .split-section {
   max-width: 1180px;

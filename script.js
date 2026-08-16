@@ -75,6 +75,47 @@ function renderProgress(activeIndex = -1) {
     .join("");
 }
 
+function renderMiniAngles() {
+  const miniAngleList = document.getElementById("miniAngleList");
+  miniAngleList.innerHTML = angles
+    .map(
+      (angle, index) => `
+        <div class="mini-angle">
+          <b>${index + 1}. ${angle.title}</b>
+          <p>${angle.reason}</p>
+        </div>
+      `,
+    )
+    .join("");
+}
+
+function resetDemoResult() {
+  document.getElementById("demoResult").hidden = false;
+  document.getElementById("inputSummary").textContent = document
+    .getElementById("topic")
+    .value.trim();
+  document.getElementById("runLog").innerHTML = "";
+  document.querySelectorAll(".result-block").forEach((block) => {
+    block.classList.remove("is-visible");
+  });
+  document.getElementById("inputSummaryBlock").classList.add("is-visible");
+  renderMiniAngles();
+}
+
+function revealResultStep(index) {
+  const block = document.querySelector(`[data-result-step="${index}"]`);
+  if (block) block.classList.add("is-visible");
+
+  const runLog = document.getElementById("runLog");
+  const item = document.createElement("li");
+  item.textContent = steps[index];
+  runLog.appendChild(item);
+
+  if (index === 5) {
+    document.getElementById("statusText").textContent = "模拟完成：已生成展示结果";
+  }
+}
+
 function renderAngles() {
   const angleGrid = document.getElementById("angleGrid");
   angleGrid.innerHTML = angles
@@ -136,10 +177,13 @@ function renderTags() {
 
 function runDemo() {
   const statusText = document.getElementById("statusText");
+  resetDemoResult();
+  renderProgress(-1);
   steps.forEach((step, index) => {
     window.setTimeout(() => {
       statusText.textContent = step;
       renderProgress(index);
+      revealResultStep(index);
     }, index * 620);
   });
 }
@@ -149,3 +193,4 @@ renderProgress();
 renderAngles();
 renderFlow();
 renderTags();
+renderMiniAngles();
